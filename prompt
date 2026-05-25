@@ -1,0 +1,11 @@
+drinks convenience shop pos system
+
+我要開發一個60嵐飲料店的POS系統，
+前台的界面主色是酒紅色，同時其它配色依照主色進行專業的配色，
+同時整體視覺和佈局是很專業，並且功能要完整。
+後台的系統根據標準的功能並且依照前台進行關連。
+預設登入系統的帳號及密碼為admin/admin
+
+本系統請你採next.js和postgresql開發，
+資料庫請你自行建立(possystem)。
+deploy on vercel with ikport from github + prisma

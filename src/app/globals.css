@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --wine-primary: #722F37;
+  --wine-light: #8B4049;
+  --wine-dark: #5a252c;
+  --cream: #FDF9F3;
+  --gold-accent: #B8860B;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Wine red theme utilities */
+@layer utilities {
+  .bg-wine-primary {
+    background-color: var(--wine-primary);
+  }
+  .bg-wine-light {
+    background-color: var(--wine-light);
+  }
+  .bg-wine-dark {
+    background-color: var(--wine-dark);
+  }
+  .text-wine-primary {
+    color: var(--wine-primary);
+  }
+  .border-wine {
+    border-color: var(--wine-primary);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--wine-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--wine-light);
+}
+
+/* Card glass effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(114, 47, 55, 0.1);
+}
+
+/* Button styles */
+.btn-wine {
+  @apply bg-wine-600 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200;
+  @apply hover:bg-wine-700 active:scale-95;
+}
+
+.btn-outline-wine {
+  @apply border-2 border-wine-600 text-wine-600 px-6 py-2 rounded-lg font-medium transition-all duration-200;
+  @apply hover:bg-wine-600 hover:text-white;
+}

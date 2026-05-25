@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication
+model User {
+  id        String   @id @default(cuid())
+  username String   @unique
+  password String
+  name     String?
+  role     String   @default("staff") // admin, manager, staff
+  active   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Product categories
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  color       String?   @default("#722F37") // Wine red default
+  sortOrder   Int       @default(0)
+  active      Boolean   @default(true)
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Products (drinks, toppings, etc.)
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  price       Decimal     @db.Decimal(10, 2)
+  image       String?
+  size        String?      // S, M, L, XL
+  categoryId String
+  category    Category    @relation(fields: [categoryId], references: [id])
+  orderItems  OrderItem[]
+  active      Boolean      @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+// Toppings (add-ons for drinks)
+model Topping {
+  id        String     @id @default(cuid())
+  name      String
+  price    Decimal    @db.Decimal(10, 2)
+  active   Boolean    @default(true)
+  orderItems OrderItem[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// Orders
+model Order {
+  id            String      @id @default(cuid())
+  orderNumber   String      @unique
+  status        String      @default("pending") // pending, preparing, completed, cancelled
+  totalAmount   Decimal     @db.Decimal(10, 2)
+  paymentMethod String?     // cash, card, linepay
+  customerName  String?
+  customerPhone String?
+  notes         String?
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  items         OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+// Order items (products in an order)
+model OrderItem {
+  id         String   @id @default(cuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product    Product  @relation(fields: [productId], references: [id])
+  toppingId String?
+  topping    Topping? @relation(fields: [toppingId], references: [id])
+  quantity   Int
+  unitPrice  Decimal  @db.Decimal(10, 2)
+  createdAt  DateTime  @default(now())
+}
