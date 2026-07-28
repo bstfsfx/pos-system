@@ -2,7 +2,7 @@
   "name": "pos-system",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://pos-system.vercel.app",
+  "homepage": "https://pos-system-swart.vercel.app",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
@@ -13,7 +13,9 @@
     "db:seed": "npx tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "@prisma/client": "^5.10.0",
+    "@vercel/postgres": "^0.10.0",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
     "next": "14.1.0",
