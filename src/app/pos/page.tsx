@@ -217,7 +217,7 @@ export default function POSPage() {
 
           {/* Products Grid */}
           <div className="grid grid-cols-3 xl:grid-cols-4 gap-3 overflow-y-auto flex-1">
-            {currentProductsWithCategory.map((product: Product) => (
+            {currentProductsWithCategory.map((product: any) => (
               <button
                 key={product.id}
                 onClick={() => {
@@ -225,10 +225,15 @@ export default function POSPage() {
                   setSelectedTopping(null)
                   setQuantity(1)
                 }}
-                className={`p-4 rounded-xl bg-white shadow-sm hover:shadow-lg transition-all text-left ${
+                className={`p-3 rounded-xl bg-white shadow-sm hover:shadow-lg transition-all text-left ${
                   selectedProduct?.id === product.id ? 'ring-2 ring-wine-500' : ''
                 }`}
               >
+                {product.image && (
+                  <div className="w-full h-20 mb-2 rounded-lg overflow-hidden bg-gray-100">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                  </div>
+                )}
                 <div className="text-lg font-bold text-wine-800">{product.name}</div>
                 <div className="text-wine-600 mt-1">\$ {Number(product.price).toFixed(0)}</div>
                 {product.size && (
