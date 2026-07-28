@@ -17,6 +17,25 @@ model User {
   active   Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  orders    Order[]
+}
+
+// Member model for customer membership (social login)
+model Member {
+  id            String   @id @default(cuid())
+  email         String?  @unique
+  name          String?
+  phone         String?
+  provider     String   // google, line, facebook
+  providerId   String   // OAuth provider user ID
+  picture      String?  // Profile picture URL
+  points       Int      @default(0) // Loyalty points
+  password     String?  // For email/password fallback
+  active       Boolean  @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  
+  @@unique([provider, providerId])
 }
 
 // Product categories

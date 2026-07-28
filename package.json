@@ -2,6 +2,7 @@
   "name": "pos-system",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://pos-system.vercel.app",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",

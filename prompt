@@ -8,4 +8,7 @@ drinks convenience shop pos system
 
 本系統請你採next.js和postgresql開發，
 資料庫請你自行建立(possystem)。
-deploy on vercel with ikport from github + prisma
+deploy on vercel with import from github + prisma
+
+請根據此系統的會員註冊，可使用Google帳號註冊以及line帳號註冊和facebook帳號註冊。
+(同時額外寫出要申請google api 和 line相關api申請和fb api的說明。)

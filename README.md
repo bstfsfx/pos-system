@@ -1,5 +1,9 @@
 # 60嵐 POS 系統 (60嵐飲料店)
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bstfsfx/pos-system)
+
+**線上 Demo**: https://pos-system.vercel.app
+
 專業的酒紅色主題 POS 系統，適用於手搖飲料店。
 
 ## 功能特色
